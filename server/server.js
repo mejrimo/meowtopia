@@ -18,6 +18,8 @@ const app = express();
 //MIDDLEWARES
 //for security http header
 app.use(helmet());
+//MONGOOSE SETTING to sanitize query's inputs
+mongoose.set('sanitizeFilter', true);
 //parse incoming cookies and make them available to the application
 app.use(cookieParser());
 //parse incoming URL-encoded requests
@@ -31,19 +33,16 @@ app.use((req, res, next) => {
 });
 
 //ROUTES
-app.use('/api/users', userRoutes);
-app.use('api/kitties', kittiesRoutes);
+// app.use('/api/users', userRoutes);
+// app.use('api/kitties', kittiesRoutes);
 
 //ERRORHANDLER
 app.use(notFound);
 app.use(errorHandler);
 
-//MONGOOSE SETTING
-//sanitize query's inputs
-mongoose.set('sanitizeFilter', true);
 //CONNECTION TO DB
 mongoose
-	.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
+	.connect(URI)
 	.then(() => {
 		//LISTEN FOR REQUEST
 		app.listen(PORT, () => {
