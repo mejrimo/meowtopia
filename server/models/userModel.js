@@ -22,6 +22,10 @@ const userSchema = new Schema(
 			type: String,
 			required: true,
 		},
+		favKittiesId: {
+			type: Array,
+			items: String,
+		},
 	},
 	{ timestamps: true }
 );
