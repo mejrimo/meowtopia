@@ -94,10 +94,35 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 	}
 });
 
+//DELETE @/profile - DELETE user
+const deleteUser = asyncHandler(async (req, res) => {
+	const user = await User.findById(req.user._id);
+
+	if (user) {
+		await User.deleteOne(user._id);
+		res.cookie('jwt', '', {
+			httpOnly: true,
+			expires: new Date(0),
+		});
+		res.status(200).json({
+			deletedUser: {
+				_id: user._id,
+				name: user.name,
+				email: user.email,
+			},
+			message: 'User successfully deleted',
+		});
+	} else {
+		res.status(404);
+		throw new Error('User not found');
+	}
+});
+
 export {
 	authUser,
 	registerUser,
 	logoutUser,
 	getUserProfile,
 	updateUserProfile,
+	deleteUser,
 };
