@@ -6,13 +6,14 @@ import {
 	registerUser,
 	updateUserProfile,
 } from '../controllers/userController';
+import { protect } from '../middleware/authMiddleware';
 
 const router = express.Router();
 
 router.post('/register', registerUser);
 router.post('/auth', authUser);
 router.post('/logout', logoutUser);
-router.get('/profile', getUserProfile);
-router.patch('/profile', updateUserProfile);
+router.get('/profile', protect, getUserProfile);
+router.patch('/profile', protect, updateUserProfile);
 
 export default router;
