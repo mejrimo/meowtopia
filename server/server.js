@@ -8,6 +8,7 @@ import mongoose from 'mongoose';
 
 import { errorHandler, notFound } from './middleware/errorHandlers.js';
 import userRoutes from './routes/userRoutes.js';
+import kittyRoutes from './routes/kittyRoutes.js';
 
 //ENV VARIABLES
 const PORT = process.env.PORT || 3000;
@@ -35,7 +36,7 @@ app.use((req, res, next) => {
 
 //ROUTES
 app.use('/api/users', userRoutes);
-// app.use('api/kitties', kittiesRoutes);
+app.use('/api/kitties', kittyRoutes);
 
 //ERRORHANDLER
 app.use(notFound);
