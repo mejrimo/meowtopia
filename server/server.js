@@ -7,6 +7,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 import { errorHandler, notFound } from './middleware/errorHandlers.js';
+import userRoutes from './routes/userRoutes.js';
 
 //ENV VARIABLES
 const PORT = process.env.PORT || 3000;
@@ -33,7 +34,7 @@ app.use((req, res, next) => {
 });
 
 //ROUTES
-// app.use('/api/users', userRoutes);
+app.use('/api/users', userRoutes);
 // app.use('api/kitties', kittiesRoutes);
 
 //ERRORHANDLER
