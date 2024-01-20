@@ -22,10 +22,7 @@ const userSchema = new Schema(
 			type: String,
 			required: true,
 		},
-		favKittiesId: {
-			type: Array,
-			items: String,
-		},
+		favKittiesId: [mongoose.Schema.Types.ObjectId],
 	},
 	{ timestamps: true }
 );
