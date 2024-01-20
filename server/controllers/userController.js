@@ -118,6 +118,47 @@ const deleteUser = asyncHandler(async (req, res) => {
 	}
 });
 
+//POST @/profile/favorites/:kittyId - ADD/REMOVE a kitty from user's favorites list
+const changeFavorites = asyncHandler(async (req, res) => {
+	const user = await User.findById(req.user._id);
+	const { kittyId } = req.params;
+
+	if (user) {
+		if (user.favKittiesId.includes(kittyId)) {
+			user.favKittiesId = user.favKittiesId.filter((id) => id !== kittyId);
+			const updatedUser = await user.save();
+			res.status(200).json({
+				updatedUser,
+				message: 'Kitty successfully removed from favorites',
+			});
+		} else {
+			user.favKittiesId.push(kittyId);
+			const updatedUser = await user.save();
+			res.status(200).json({
+				updatedUser,
+				message: 'Kitty successfully added to your favorites',
+			});
+		}
+	} else {
+		res.status(404);
+		throw new Error('User not found');
+	}
+});
+
+//GET @/profile/favorites - GET ALL user's favorites kitties
+const getAllFavorites = asyncHandler(async (req, res) => {
+	const user = await User.findById(req.user._id);
+
+	if (user) {
+		const favKittiesId = user.favKittiesId;
+
+		res.status(200).json(favKittiesId);
+	} else {
+		res.status(404);
+		throw new Error('User not found');
+	}
+});
+
 export {
 	authUser,
 	registerUser,
@@ -125,4 +166,6 @@ export {
 	getUserProfile,
 	updateUserProfile,
 	deleteUser,
+	changeFavorites,
+	getAllFavorites,
 };
