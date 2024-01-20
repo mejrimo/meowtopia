@@ -1,6 +1,5 @@
 import express from 'express';
 import { protect } from '../middleware/authMiddleware.js';
-import idChecker from '../middleware/idChecker.js';
 import {
 	authUser,
 	changeFavorites,
@@ -20,12 +19,7 @@ router.post('/logout', logoutUser);
 router.get('/profile', protect, getUserProfile);
 router.patch('/profile', protect, updateUserProfile);
 router.delete('/profile', protect, deleteUser);
-router.delete('/profile/favorites', protect, getAllFavorites);
-router.delete(
-	'/profile/favorites/:kittyId',
-	protect,
-	idChecker,
-	changeFavorites
-);
+router.get('/profile/favorites', protect, getAllFavorites);
+router.post('/profile/favorites/:kittyId', protect, changeFavorites);
 
 export default router;
