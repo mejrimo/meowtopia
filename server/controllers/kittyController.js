@@ -28,7 +28,7 @@ const getAllKitties = asyncHandler(async (req, res) => {
 const getKitty = asyncHandler(async (req, res) => {
 	const { id } = req.params;
 
-	const kitty = Kitty.findById(id);
+	const kitty = await Kitty.findById(id);
 
 	if (!kitty) {
 		return res.status(404).json({ error: 'Kitty not found' });
