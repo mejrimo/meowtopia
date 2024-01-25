@@ -10,7 +10,9 @@ const Layout = () => {
 				<Navbar />
 				<Outlet />
 			</div>
-			<Footer className="mt-auto" />
+			<div className="mt-auto bg-zinc-100">
+				<Footer />
+			</div>
 		</>
 	);
 };
