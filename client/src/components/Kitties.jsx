@@ -1,4 +1,4 @@
-const kitties = () => {
-	return <div>kitties</div>;
+const Kitties = () => {
+	return <div>Kitties</div>;
 };
-export default kitties;
+export default Kitties;
