@@ -111,7 +111,7 @@ const Navbar = () => {
 					</div>
 				</nav>
 
-				{/* DESKTOP LAYOUT */}
+				{/* MOBILE LAYOUT */}
 
 				<Dialog
 					as="div"
@@ -180,8 +180,8 @@ const Navbar = () => {
 								</ul>
 
 								{userInfo ? (
-									<div className="py-4">
-										<ul className="space-y-4">
+									<div className="py-4 divide-y divide-zinc-700/50">
+										<ul className="py-2 space-y-4">
 											<li>
 												<Link
 													to="/profile"
@@ -204,16 +204,16 @@ const Navbar = () => {
 													Favorites
 												</Link>
 											</li>
-											<li>
-												<Link
-													to="/"
-													onClick={logoutHandler}
-													className="p-2 text-lg font-medium text-zinc-700 hover:text-violet-700 active:font-bold active:text-violet-900"
-												>
-													Logout
-												</Link>
-											</li>
 										</ul>
+										<div className="py-4">
+											<Link
+												to="/"
+												onClick={logoutHandler}
+												className="p-2 text-lg font-medium text-zinc-700 hover:text-violet-700 active:font-bold active:text-violet-900"
+											>
+												Logout
+											</Link>
+										</div>
 									</div>
 								) : (
 									<div className="py-4">
