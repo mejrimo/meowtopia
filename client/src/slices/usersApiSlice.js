@@ -9,43 +9,43 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 				method: 'POST',
 				body: data,
 			}),
+		}),
 
-			register: builder.mutation({
-				query: (data) => ({
-					url: `${USERS_URL}/register`,
-					method: 'POST',
-					body: data,
-				}),
+		register: builder.mutation({
+			query: (data) => ({
+				url: `${USERS_URL}/register`,
+				method: 'POST',
+				body: data,
 			}),
+		}),
 
-			logout: builder.mutation({
-				query: () => ({
-					url: `${USERS_URL}/logout`,
-					method: 'POST',
-				}),
+		logout: builder.mutation({
+			query: () => ({
+				url: `${USERS_URL}/logout`,
+				method: 'POST',
 			}),
+		}),
 
-			updateUser: builder.mutation({
-				query: (data) => ({
-					url: `${USERS_URL}/profile`,
-					method: 'PATCH',
-					body: data,
-				}),
+		updateUser: builder.mutation({
+			query: (data) => ({
+				url: `${USERS_URL}/profile`,
+				method: 'PATCH',
+				body: data,
 			}),
+		}),
 
-			deleteUser: builder.mutation({
-				query: () => ({
-					url: `${USERS_URL}/profile`,
-					method: 'DELETE',
-				}),
+		deleteUser: builder.mutation({
+			query: () => ({
+				url: `${USERS_URL}/profile`,
+				method: 'DELETE',
 			}),
+		}),
 
-			updateFavorites: builder.mutation({
-				query: (data) => ({
-					url: `${USERS_URL}/profile/favorites/:kittyId`,
-					method: 'POST',
-					body: data,
-				}),
+		updateFavorites: builder.mutation({
+			query: (data) => ({
+				url: `${USERS_URL}/profile/favorites/:kittyId`,
+				method: 'POST',
+				body: data,
 			}),
 		}),
 	}),
