@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { useLoginMutation } from '../slices/usersApiSlice.js';
 import { setCredentials } from '../slices/authSlice.js';
-import { toast } from 'react-toastify';
 
 import Loader from './Loader.jsx';
+import SubmitButton from './SubmitButton.jsx';
 
 const LoginForm = () => {
 	const [email, setEmail] = useState('');
@@ -55,7 +56,7 @@ const LoginForm = () => {
 						placeholder="Enter Email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
-						className="p-1 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-zinc-500"
+						className="p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
 					/>
 				</div>
 				<div className="flex flex-col py-3 text-zinc-700">
@@ -67,18 +68,13 @@ const LoginForm = () => {
 						placeholder="Enter Password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
-						className="p-1 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-zinc-500"
+						className="p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
 					/>
 				</div>
 
 				{isLoading && <Loader />}
 
-				<button
-					type="submit"
-					className="px-6 py-2 mx-1 my-3 font-medium rounded shadow bg-violet-700 text-zinc-100 hover:bg-violet-900 active:bg-violet-500"
-				>
-					Sign in
-				</button>
+				<SubmitButton>Sign in</SubmitButton>
 
 				<p className="mx-1 my-3 text-zinc-700">
 					New user? Please{' '}
@@ -93,4 +89,5 @@ const LoginForm = () => {
 		</div>
 	);
 };
+
 export default LoginForm;
