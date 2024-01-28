@@ -1,9 +1,14 @@
+import catLogo from '/cat_with_yarn.svg';
+
 import { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { Link, useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
-import catLogo from '/cat_with_yarn.svg';
+import { useLogoutMutation } from '../slices/usersApiSlice';
+import { removeCredentials } from '../slices/authSlice';
+import DropdownMenu from './DropdownMenu';
+import Button from './Button';
 
 const Navbar = () => {
 	const { userInfo } = useSelector((state) => state.auth);
@@ -24,15 +29,32 @@ const Navbar = () => {
 		setIsMenuOpen(false);
 	};
 
+	const dispatch = useDispatch();
+
+	const [logoutApiCall] = useLogoutMutation();
+
+	const logoutHandler = async () => {
+		try {
+			await logoutApiCall().unwrap();
+			dispatch(removeCredentials());
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
 	return (
 		<>
 			<header className="sticky top-0 z-50  shadow-[0_2px_21px_0_rgba(0,0,0,0.25)] bg-zinc-100">
 				<nav className="flex items-center justify-between p-4 md:px-6 lg:px-8">
 					<Link
 						to="/"
-						className="flex items-center gap-1 text-lg font-bold text-violet-900"
+						className="flex items-center gap-1 text-lg font-bold text-violet-700"
 					>
-						<img src={catLogo} alt="Cat with yarn" className="w-6 h-6" />
+						<img
+							src={catLogo}
+							alt="Cat with yarn"
+							className="w-6 h-6 md:w-9 md:h-9 lg:w-12 lg:h-12"
+						/>
 						Meowtopia
 					</Link>
 
@@ -70,16 +92,6 @@ const Navbar = () => {
 							</li>
 							<li>
 								<Link
-									to="/kitties"
-									className={
-										location.pathname === '/kitties' ? active : inactive
-									}
-								>
-									Kitties
-								</Link>
-							</li>
-							<li>
-								<Link
 									to="/about"
 									className={location.pathname === '/about' ? active : inactive}
 								>
@@ -98,16 +110,16 @@ const Navbar = () => {
 							</li>
 						</ul>
 						{userInfo ? (
-							<button>{userInfo.name}</button>
+							<DropdownMenu userName={userInfo.name} />
 						) : (
 							<Link to="/login" className="ms-8">
-								<button className="px-6 py-2 font-medium rounded shadow bg-violet-700 text-zinc-100 hover:bg-violet-900 active:bg-violet-500">
-									Sign in
-								</button>
+								<Button>Sign in</Button>
 							</Link>
 						)}
 					</div>
 				</nav>
+
+				{/* DESKTOP LAYOUT */}
 
 				<Dialog
 					as="div"
@@ -120,7 +132,7 @@ const Navbar = () => {
 						<div className="flex items-center justify-between">
 							<Link
 								to="/"
-								className="flex items-center gap-1 text-lg font-bold text-violet-900"
+								className="flex items-center gap-1 text-lg font-bold text-violet-700"
 							>
 								<img src={catLogo} alt="Cat with yarn" className="w-6 h-6" />
 								Meowtopia
@@ -165,16 +177,6 @@ const Navbar = () => {
 									</li>
 									<li>
 										<Link
-											to="/kitties"
-											className={
-												location.pathname === '/kitties' ? active : inactive
-											}
-										>
-											Kitties
-										</Link>
-									</li>
-									<li>
-										<Link
 											to="/about"
 											className={
 												location.pathname === '/about' ? active : inactive
@@ -194,13 +196,50 @@ const Navbar = () => {
 										</Link>
 									</li>
 								</ul>
-								<div className="py-4">
-									<Link to="/login">
-										<button className="w-full px-6 py-2 font-medium rounded shadow bg-violet-700 text-zinc-100 hover:bg-violet-900 active:bg-violet-500">
-											Sign in
-										</button>
-									</Link>
-								</div>
+
+								{userInfo ? (
+									<div className="py-4">
+										<ul className="space-y-4">
+											<li>
+												<Link
+													to="/profile"
+													className={
+														location.pathname === '/profile' ? active : inactive
+													}
+												>
+													Profile
+												</Link>
+											</li>
+											<li>
+												<Link
+													to="/profile/favorites"
+													className={
+														location.pathname === '/profile/favorites'
+															? active
+															: inactive
+													}
+												>
+													Favorites
+												</Link>
+											</li>
+											<li>
+												<Link
+													to="/"
+													onClick={logoutHandler}
+													className="p-2 text-lg font-medium text-zinc-700 hover:text-violet-700 active:font-bold active:text-violet-900"
+												>
+													Logout
+												</Link>
+											</li>
+										</ul>
+									</div>
+								) : (
+									<div className="py-4">
+										<Link to="/login">
+											<Button className="w-full">Sign in</Button>
+										</Link>
+									</div>
+								)}
 							</div>
 						</div>
 					</Dialog.Panel>
