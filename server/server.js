@@ -4,6 +4,7 @@ dotenv.config();
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 import express from 'express';
+import cors from 'cors';
 import mongoose from 'mongoose';
 
 import { errorHandler, notFound } from './middleware/errorHandlers.js';
@@ -28,6 +29,8 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 //parse incoming JSON requests
 app.use(express.json());
+//cors
+app.use(cors());
 //DEBUG middleware
 app.use((req, res, next) => {
 	console.log(req.path, req.method);
