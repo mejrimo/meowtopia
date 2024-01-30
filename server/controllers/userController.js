@@ -125,17 +125,31 @@ const changeFavorites = asyncHandler(async (req, res) => {
 
 	if (user) {
 		if (user.favKittiesId.includes(kittyId)) {
-			user.favKittiesId = user.favKittiesId.filter((id) => id !== kittyId);
+			// user.favKittiesId = user.favKittiesId.filter((id) => id !== kittyId);
+			const index = user.favKittiesId.indexOf(kittyId);
+			if (index !== -1) {
+				user.favKittiesId.splice(index, 1);
+			}
 			const updatedUser = await user.save();
 			res.status(200).json({
-				updatedUser,
+				updatedUser: {
+					_id: updatedUser._id,
+					name: updatedUser.name,
+					email: updatedUser.email,
+					favKittiesId: updatedUser.favKittiesId,
+				},
 				message: 'Kitty successfully removed from favorites',
 			});
 		} else {
 			user.favKittiesId.push(kittyId);
 			const updatedUser = await user.save();
 			res.status(200).json({
-				updatedUser,
+				updatedUser: {
+					_id: updatedUser._id,
+					name: updatedUser.name,
+					email: updatedUser.email,
+					favKittiesId: updatedUser.favKittiesId,
+				},
 				message: 'Kitty successfully added to your favorites',
 			});
 		}
