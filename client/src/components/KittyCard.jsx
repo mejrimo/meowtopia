@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FaMars, FaVenus } from 'react-icons/fa';
+import Heart from './Heart';
 
 const KittyCard = ({ data }) => {
 	const kittyElements = data?.map((kitty) => {
@@ -8,10 +9,13 @@ const KittyCard = ({ data }) => {
 		return (
 			<div
 				key={_id}
-				className="w-40 my-6 transition-all duration-200 transform shadow-md cursor-pointer shadow-slate-300 md:w-48 lg:w-56 rounded-3xl hover:shadow-lg hover:-translate-y-1"
+				className="relative w-40 my-6 transition-all duration-200 transform shadow-md cursor-pointer shadow-slate-300 md:w-48 lg:w-56 rounded-3xl hover:shadow-lg hover:-translate-y-1"
 			>
+				<div className="absolute cursor-pointer top-3 right-3">
+					<Heart size={18} id={_id} />
+				</div>
 				<Link to={`/kitty/${_id}`}>
-					<div className="flex items-center justify-center">
+					<div className="flex items-center justify-center ">
 						<img
 							className="object-contain w-full h-24 rounded-lg lg:h-40 md:h-32"
 							src={image}

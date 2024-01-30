@@ -3,6 +3,7 @@ import { FaMars, FaVenus } from 'react-icons/fa';
 import { FaRegCircleCheck, FaRegCircleXmark } from 'react-icons/fa6';
 
 import Loader from './Loader';
+import Heart from './Heart';
 import { useKitty } from '../hooks/useKitties';
 
 const KittyDetails = () => {
@@ -33,7 +34,10 @@ const KittyDetails = () => {
 
 	return (
 		<div className="container mx-auto">
-			<div className="flex flex-col items-center justify-center mb-10 lg:hidden">
+			<div className="relative flex flex-col items-center justify-center mb-10 lg:hidden">
+				<div className="absolute cursor-pointer top-8 right-8">
+					<Heart size={24} id={_id} />
+				</div>
 				<img
 					src={image}
 					alt={`${name} photo`}
@@ -114,12 +118,17 @@ const KittyDetails = () => {
 
 				<div className="h-px mb-10 bg-violet-400" />
 
-				<div className="flex justify-between">
-					<img
-						src={image}
-						alt={`${name} photo`}
-						className="shadow-[0_2px_21px_0_rgba(0,0,0,0.25)] max-w-xl object-contain rounded-3xl"
-					></img>
+				<div className="flex justify-between ">
+					<div className="relative">
+						<img
+							src={image}
+							alt={`${name} photo`}
+							className="shadow-[0_2px_21px_0_rgba(0,0,0,0.25)] max-w-xl object-contain rounded-3xl"
+						></img>
+						<div className="absolute cursor-pointer top-8 right-8">
+							<Heart id={_id} size={30} />
+						</div>
+					</div>
 
 					<div className="flex flex-col items-center w-full ps-44">
 						<div className="flex items-center justify-between w-full mb-5">
