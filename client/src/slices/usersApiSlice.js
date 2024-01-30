@@ -43,9 +43,15 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 
 		updateFavorites: builder.mutation({
 			query: (data) => ({
-				url: `${USERS_URL}/profile/favorites/:kittyId`,
+				url: `${USERS_URL}/profile/favorites/${data}`,
 				method: 'POST',
-				body: data,
+			}),
+		}),
+
+		getFavKittiesId: builder.query({
+			query: () => ({
+				url: `${USERS_URL}/profile/favorites`,
+				method: 'GET',
 			}),
 		}),
 	}),
@@ -58,4 +64,5 @@ export const {
 	useUpdateUserMutation,
 	useDeleteUserMutation,
 	useUpdateFavoritesMutation,
+	useGetFavKittiesIdQuery,
 } = usersApiSlice;
