@@ -9,6 +9,7 @@ import Kitty from './pages/Kitty';
 import PrivateRoute from './components/PrivateRoute';
 import Profile from './pages/Profile';
 import Contact from './pages/Contact';
+import Favorites from './pages/Favorites';
 
 function App() {
 	return (
@@ -23,6 +24,7 @@ function App() {
 					<Route path="/contact" element={<Contact />} />
 					<Route path="" element={<PrivateRoute />}>
 						<Route path="/profile" element={<Profile />} />
+						<Route path="/profile/favorites" element={<Favorites />} />
 					</Route>
 				</Route>
 			</Routes>
