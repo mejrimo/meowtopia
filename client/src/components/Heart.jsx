@@ -9,29 +9,22 @@ import {
 } from '../slices/usersApiSlice';
 
 const Heart = ({ id, size }) => {
+	const { data, refetch } = useGetFavKittiesIdQuery();
 	const { userInfo } = useSelector((state) => state.auth);
-	const [color, setColor] = useState('rgba(0, 0, 0, 0.5)');
 
-	const { data } = useGetFavKittiesIdQuery();
+	const [color, setColor] = useState('rgba(0, 0, 0, 0.5)');
 
 	const [updateFavorites] = useUpdateFavoritesMutation();
 
-	useEffect(() => {
-		setColor(() => (data?.includes(id) ? '#6d28d9' : 'rgba(0, 0, 0, 0.5)'));
-		console.log(data);
-	}, [data]);
-
 	const handleClick = async (e) => {
-		e.stopPropagation();
 		if (userInfo) {
 			try {
-				const res = await updateFavorites(id).unwrap();
-
-				console.log(res);
-
 				setColor((prev) =>
 					prev === '#6d28d9' ? 'rgba(0, 0, 0, 0.5)' : '#6d28d9'
 				);
+				await updateFavorites(id).unwrap();
+
+				refetch();
 			} catch (err) {
 				toast.error(err?.data?.message || err.error);
 			}
@@ -39,6 +32,10 @@ const Heart = ({ id, size }) => {
 			toast.error('Must be logged in to add favorites');
 		}
 	};
+
+	useEffect(() => {
+		setColor(data?.includes(id) ? '#6d28d9' : 'rgba(0, 0, 0, 0.5)');
+	}, [data]);
 
 	return <FaHeart size={size} color={color} onClick={handleClick} />;
 };
