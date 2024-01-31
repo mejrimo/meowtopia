@@ -30,11 +30,10 @@ app.use(express.urlencoded({ extended: true }));
 //parse incoming JSON requests
 app.use(express.json());
 //cors
+app.use(cors());
 app.use(
 	cors({
-		origin: ['https://meowtopia-ten.vercel.app/'],
-		methods: ['GET', 'POST', 'DELETE', 'PATCH'],
-		credentials: true,
+		origin: 'https://meowtopia-kappa.vercel.app/',
 	})
 );
 //DEBUG middleware
