@@ -30,13 +30,7 @@ app.use(express.urlencoded({ extended: true }));
 //parse incoming JSON requests
 app.use(express.json());
 //cors
-
-app.use(
-	cors({
-		origin: 'https://meowtopia-phi.vercel.app/',
-	})
-);
-
+app.use(cors());
 //DEBUG middleware
 app.use((req, res, next) => {
 	console.log(req.path, req.method);
