@@ -33,7 +33,7 @@ app.use(express.json());
 app.use(cors());
 app.use(
 	cors({
-		origin: 'https://meowtopia-kappa.vercel.app/',
+		origin: 'https://meowtopia-phi.vercel.app/',
 	})
 );
 //DEBUG middleware
