@@ -11,7 +11,9 @@ const KittyDetails = () => {
 	const navigate = useNavigate();
 	const params = useParams();
 
-	const { isLoading, isError, data } = useFetchKitties(`kitties/${params.id}`);
+	const { isLoading, isError, kittiesData } = useFetchKitties(
+		`kitties/${params.id}`
+	);
 
 	if (isError) {
 		navigate('/error');
@@ -31,7 +33,7 @@ const KittyDetails = () => {
 		isAnimalFriendly,
 		isSpecialNeeds,
 		description,
-	} = data;
+	} = kittiesData;
 
 	return (
 		<div className="container mx-auto">

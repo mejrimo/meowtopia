@@ -9,7 +9,7 @@ const api = axios.create({
 const useFetchKitties = (endpoint) => {
 	const [isLoading, setIsLoading] = useState(true);
 	const [isError, setIsError] = useState(false);
-	const [data, setData] = useState([]);
+	const [kittiesData, setKittiesData] = useState([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -17,7 +17,7 @@ const useFetchKitties = (endpoint) => {
 				const res = await api.get(endpoint);
 				const fetchedData = await res?.data;
 
-				setData(fetchedData);
+				setKittiesData(fetchedData);
 			} catch (err) {
 				toast.error(err?.data?.message || err.error);
 				setIsError(true);
@@ -28,7 +28,7 @@ const useFetchKitties = (endpoint) => {
 		fetchData();
 	}, []);
 
-	return { isLoading, isError, data };
+	return { isLoading, isError, kittiesData };
 };
 
 // const useKitty = (_id) => {
