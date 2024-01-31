@@ -32,7 +32,7 @@ app.use(express.json());
 //cors
 app.use(
 	cors({
-		origin: ['https://meowtopia-ten.vercel.app'],
+		origin: ['https://meowtopia-ten.vercel.app/'],
 		methods: ['GET', 'POST', 'DELETE', 'PATCH'],
 		credentials: true,
 	})
