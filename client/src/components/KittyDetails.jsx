@@ -4,13 +4,14 @@ import { FaRegCircleCheck, FaRegCircleXmark } from 'react-icons/fa6';
 
 import Loader from './Loader';
 import Heart from './Heart';
-import { useKitty } from '../hooks/useKitties';
+import BackArrow from './BackArrow';
+import { useFetchKitties } from '../hooks/useFetchKitties';
 
 const KittyDetails = () => {
 	const navigate = useNavigate();
 	const params = useParams();
 
-	const { isLoading, isError, data } = useKitty(params.id);
+	const { isLoading, isError, data } = useFetchKitties(`kitties/${params.id}`);
 
 	if (isError) {
 		navigate('/error');
@@ -35,6 +36,9 @@ const KittyDetails = () => {
 	return (
 		<div className="container mx-auto">
 			<div className="relative flex flex-col items-center justify-center mb-10 lg:hidden">
+				<div className="absolute cursor-pointer top-8 left-6">
+					<BackArrow size={24} />
+				</div>
 				<div className="absolute cursor-pointer top-8 right-8">
 					<Heart size={24} id={_id} />
 				</div>

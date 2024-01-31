@@ -1,11 +1,11 @@
 import { useNavigate } from 'react-router-dom';
 
 import Loader from './Loader';
-import { useKitties } from '../hooks/useKitties';
+import { useFetchKitties } from '../hooks/useFetchKitties';
 import KittyCard from './KittyCard';
 
 const Kitties = () => {
-	const { isLoading, isError, data } = useKitties();
+	const { isLoading, isError, data } = useFetchKitties('kitties');
 
 	const navigate = useNavigate();
 
