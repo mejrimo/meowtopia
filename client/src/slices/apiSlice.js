@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const baseQuery = fetchBaseQuery({
 	baseUrl: 'https://meowtopia-server.onrender.com',
+	withCredentials: true,
 }); // with no proxy -> baseUrl:'http://localhost:8000'
 
 export const apiSlice = createApi({
