@@ -36,6 +36,11 @@ app.use(
 		origin: 'https://meowtopia-phi.vercel.app/',
 	})
 );
+app.use(
+	cors({
+		origin: 'https://meowtopia-kappa.vercel.app/',
+	})
+);
 //DEBUG middleware
 app.use((req, res, next) => {
 	console.log(req.path, req.method);

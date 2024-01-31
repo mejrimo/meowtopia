@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
 
 const api = axios.create({
-	baseURL: 'https://meowtopia-kappa.vercel.app/api',
+	baseURL: 'https://meowtopia-phi.vercel.app/api',
 });
 
 const useFetchKitties = (endpoint) => {
