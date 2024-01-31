@@ -34,8 +34,12 @@ const Heart = ({ id, size }) => {
 	};
 
 	useEffect(() => {
-		setColor(data?.includes(id) ? '#6d28d9' : 'rgba(0, 0, 0, 0.5)');
-	}, [data]);
+		if (userInfo) {
+			setColor(data?.includes(id) ? '#6d28d9' : 'rgba(0, 0, 0, 0.5)');
+		} else {
+			setColor('rgba(0, 0, 0, 0.5)');
+		}
+	}, [data, userInfo]);
 
 	return <FaHeart size={size} color={color} onClick={handleClick} />;
 };
