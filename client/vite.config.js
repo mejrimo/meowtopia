@@ -7,7 +7,7 @@ export default defineConfig({
 	server: {
 		proxy: {
 			'/api': {
-				target: 'https://meowtopia-phi.vercel.app',
+				target: 'https://meowtopia-server.onrender.com',
 				changeOrigin: true,
 			},
 		},
