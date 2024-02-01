@@ -9,7 +9,7 @@ const generateToken = (res, userId) => {
 		httpOnly: true,
 		domain:
 			process.env.NODE_ENV === 'development'
-				? '.localhost'
+				? 'localhost'
 				: 'meowtopia-server.onrender.com',
 		secure: process.env.NODE_ENV !== 'development',
 		sameSite: 'strict',
