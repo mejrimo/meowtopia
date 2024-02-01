@@ -49,7 +49,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
 //POST @/logout - RESET cookie and logout user
 const logoutUser = asyncHandler(async (req, res) => {
-	res.cookie('tokenAccesso', '', {
+	res.cookie('jwt', '', {
 		httpOnly: true,
 		expires: new Date(0),
 	});
@@ -100,7 +100,7 @@ const deleteUser = asyncHandler(async (req, res) => {
 
 	if (user) {
 		await User.deleteOne(user._id);
-		res.cookie('tokenAccesso', '', {
+		res.cookie('jwt', '', {
 			httpOnly: true,
 			expires: new Date(0),
 		});
