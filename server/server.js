@@ -43,18 +43,18 @@ app.use((req, res, next) => {
 app.use('/api/users', userRoutes);
 app.use('/api/kitties', kittyRoutes);
 
-if (process.env.NODE_ENV === 'production') {
-	const __dirname = path.resolve();
-	const parentDir = path.dirname(__dirname);
+// if (process.env.NODE_ENV === 'production') {
+// 	const __dirname = path.resolve();
+// 	const parentDir = path.dirname(__dirname);
 
-	app.use(express.static(path.join(parentDir, 'client/dist')));
+// 	app.use(express.static(path.join(parentDir, 'client/dist')));
 
-	app.get('*', (req, res) =>
-		res.sendFile(path.resolve(parentDir, 'client', 'dist', 'index.html'))
-	);
-} else {
-	app.get('/', (req, res) => res.send('Server is ready'));
-}
+// 	app.get('*', (req, res) =>
+// 		res.sendFile(path.resolve(parentDir, 'client', 'dist', 'index.html'))
+// 	);
+// } else {
+// 	app.get('/', (req, res) => res.send('Server is ready'));
+// }
 
 //ERRORHANDLER
 app.use(notFound);
