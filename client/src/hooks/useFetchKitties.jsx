@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { useState, useEffect } from 'react';
 
 const api = axios.create({
-	baseURL: 'https://meowtopia-server.onrender.com/api',
+	baseURL: 'http://localhost:8000/api/',
 });
 
 const useFetchKitties = (endpoint) => {
