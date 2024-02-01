@@ -10,7 +10,7 @@ const generateToken = (res, userId) => {
 		domain:
 			process.env.NODE_ENV === 'development'
 				? 'localhost'
-				: 'meowtopia-server.onrender.com',
+				: 'meowtopia-jrnc.onrender.com',
 		secure: process.env.NODE_ENV !== 'development',
 		sameSite: 'strict',
 		maxAge: 30 * 24 * 60 * 60 * 1000,
