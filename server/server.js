@@ -33,7 +33,7 @@ app.use(express.json());
 //cors
 app.use(
 	cors({
-		origin: true,
+		origin: '*',
 		credentials: true,
 	})
 );
