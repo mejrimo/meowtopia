@@ -18,7 +18,7 @@ const URI = process.env.MONGO_URI;
 // EXPRESS APP
 const app = express();
 
-app.set('trust proxy', 1); // trust first proxy
+app.set('trust proxy'); // trust first proxy
 //MIDDLEWARES
 //for security http header
 app.use(helmet());
