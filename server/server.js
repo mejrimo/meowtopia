@@ -37,6 +37,7 @@ app.use(
 		exposedHeaders: ['Set-cookie'],
 	})
 );
+app.set('trust proxy', 1); // trust first proxy
 
 //DEBUG middleware
 app.use((req, res, next) => {
