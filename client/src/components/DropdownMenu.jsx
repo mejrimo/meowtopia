@@ -21,7 +21,7 @@ const DropdownMenu = ({ userName }) => {
 			await logoutApiCall().unwrap();
 			dispatch(removeCredentials());
 		} catch (err) {
-			console.log(err);
+			toast.error(err?.data?.message || err.error);
 		}
 	};
 
