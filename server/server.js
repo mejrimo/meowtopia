@@ -33,7 +33,7 @@ app.use(express.json());
 //cors
 app.use(
 	cors({
-		origin: '*',
+		origin: 'https://meowtopia-jrnc.onrender.com',
 		credentials: true,
 		exposedHeaders: ['Set-Cookie'],
 	})
