@@ -34,6 +34,7 @@ app.use(
 	cors({
 		origin: '*',
 		credentials: true,
+		exposedHeaders: ['Set-cookie'],
 	})
 );
 
