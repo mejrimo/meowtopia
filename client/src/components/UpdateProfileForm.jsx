@@ -10,7 +10,6 @@ import {
 import { removeCredentials, setCredentials } from '../slices/authSlice.js';
 import Loader from './Loader.jsx';
 import SubmitButton from './SubmitButton.jsx';
-import Button from './Button.jsx';
 
 const UpdateProfileForm = () => {
 	const [name, setName] = useState('');
@@ -132,7 +131,7 @@ const UpdateProfileForm = () => {
 			</form>
 			<button
 				onClick={deleteUserFunction}
-				className="w-full px-6 py-2 mx-auto my-3 font-medium bg-red-600 rounded-md shadow text-zinc-100 max-w-72 md:max-w-md hover:bg-red-700 active:bg-red-500"
+				className="w-full px-6 py-2 mx-auto my-3 font-medium bg-red-600 rounded-lg shadow text-zinc-100 max-w-72 md:max-w-md hover:bg-red-700 active:bg-red-500"
 			>
 				Delete
 			</button>
