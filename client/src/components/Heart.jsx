@@ -1,30 +1,29 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { FaHeart } from 'react-icons/fa6';
 
-import {
-	useGetFavKittiesIdQuery,
-	useUpdateFavoritesMutation,
-} from '../slices/usersApiSlice';
+import { useUpdateFavoritesMutation } from '../slices/usersApiSlice';
+import { setCredentials } from '../slices/authSlice';
 
 const Heart = ({ id, size }) => {
-	const { data, refetch } = useGetFavKittiesIdQuery();
 	const { userInfo } = useSelector((state) => state.auth);
 
 	const [color, setColor] = useState('rgba(0, 0, 0, 0.5)');
 
+	const dispatch = useDispatch();
+
 	const [updateFavorites] = useUpdateFavoritesMutation();
 
-	const handleClick = async (e) => {
+	const handleClick = async () => {
 		if (userInfo) {
 			try {
 				setColor((prev) =>
 					prev === '#6d28d9' ? 'rgba(0, 0, 0, 0.5)' : '#6d28d9'
 				);
-				await updateFavorites(id).unwrap();
+				const res = await updateFavorites(id).unwrap();
 
-				refetch();
+				dispatch(setCredentials({ ...res }));
 			} catch (err) {
 				toast.error(err?.data?.message || err.error);
 			}
@@ -35,11 +34,13 @@ const Heart = ({ id, size }) => {
 
 	useEffect(() => {
 		if (userInfo) {
-			setColor(data?.includes(id) ? '#6d28d9' : 'rgba(0, 0, 0, 0.5)');
+			setColor(
+				userInfo?.favKittiesId?.includes(id) ? '#6d28d9' : 'rgba(0, 0, 0, 0.5)'
+			);
 		} else {
 			setColor('rgba(0, 0, 0, 0.5)');
 		}
-	}, [data, userInfo]);
+	}, [userInfo, dispatch]);
 
 	return <FaHeart size={size} color={color} onClick={handleClick} />;
 };
