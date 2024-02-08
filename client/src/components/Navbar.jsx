@@ -16,10 +16,9 @@ const Navbar = () => {
 
 	const location = useLocation();
 
-	const active =
-		'text-lg font-bold p-2 bg-zinc-100 text-violet-900 rounded w-full';
+	const active = 'text-lg font-bold p-2 bg-zinc-100 text-violet-900 rounded';
 	const inactive =
-		'text-lg font-medium p-2 text-zinc-700 hover:text-violet-700 w-full';
+		'text-lg font-medium p-2 text-zinc-700 hover:text-violet-700';
 
 	const openMenu = () => {
 		setIsMenuOpen(true);
@@ -156,7 +155,7 @@ const Navbar = () => {
 								onClick={closeMenu}
 							>
 								<ul className="py-2 space-y-4">
-									<li>
+									<li className="block">
 										<Link
 											to="/"
 											className={location.pathname === '/' ? active : inactive}
@@ -164,7 +163,7 @@ const Navbar = () => {
 											Home
 										</Link>
 									</li>
-									<li>
+									<li className="block">
 										<Link
 											to="/contact"
 											className={
@@ -179,7 +178,7 @@ const Navbar = () => {
 								{userInfo ? (
 									<div className="py-4 divide-y divide-zinc-700/50">
 										<ul className="py-2 space-y-4">
-											<li>
+											<li className="block">
 												<Link
 													to="/profile"
 													className={
@@ -189,7 +188,7 @@ const Navbar = () => {
 													Profile
 												</Link>
 											</li>
-											<li>
+											<li className="block">
 												<Link
 													to="/profile/favorites"
 													className={
@@ -206,7 +205,7 @@ const Navbar = () => {
 											<Link
 												to="/"
 												onClick={logoutHandler}
-												className="w-full p-2 text-lg font-medium text-zinc-700 hover:text-violet-700 active:font-bold active:text-violet-900"
+												className="block p-2 text-lg font-medium text-zinc-700 hover:text-violet-700 active:font-bold active:text-violet-900"
 											>
 												Logout
 											</Link>
