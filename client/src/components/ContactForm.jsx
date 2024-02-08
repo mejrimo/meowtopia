@@ -76,7 +76,7 @@ const ContactForm = () => {
 
 				<div className="flex flex-col py-3 text-zinc-700">
 					<label htmlFor="message" className="px-1">
-						Your message
+						Which cat do you want information about?
 					</label>
 					<textarea
 						name="message"
