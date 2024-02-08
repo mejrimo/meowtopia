@@ -5,7 +5,6 @@ import { Dialog } from '@headlessui/react';
 import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { useLogoutMutation } from '../slices/usersApiSlice';
 import { removeCredentials } from '../slices/authSlice';
 import DropdownMenu from './DropdownMenu';
 import Button from './Button';
@@ -31,11 +30,8 @@ const Navbar = () => {
 
 	const dispatch = useDispatch();
 
-	const [logoutApiCall] = useLogoutMutation();
-
 	const logoutHandler = async () => {
 		try {
-			await logoutApiCall().unwrap();
 			dispatch(removeCredentials());
 		} catch (err) {
 			toast.error(err?.data?.message || err.error);

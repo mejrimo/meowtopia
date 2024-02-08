@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 
-import { useLogoutMutation } from '../slices/usersApiSlice.js';
 import { removeCredentials } from '../slices/authSlice.js';
 
 function classNames(...classes) {
@@ -14,11 +13,8 @@ function classNames(...classes) {
 const DropdownMenu = ({ userName }) => {
 	const dispatch = useDispatch();
 
-	const [logoutApiCall] = useLogoutMutation();
-
 	const logoutHandler = async () => {
 		try {
-			await logoutApiCall().unwrap();
 			dispatch(removeCredentials());
 		} catch (err) {
 			toast.error(err?.data?.message || err.error);
