@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
-import { useUpdateUserMutation } from '../slices/usersApiSlice.js';
-import { setCredentials } from '../slices/authSlice.js';
+import {
+	useDeleteUserMutation,
+	useUpdateUserMutation,
+} from '../slices/usersApiSlice.js';
+import { removeCredentials, setCredentials } from '../slices/authSlice.js';
 import Loader from './Loader.jsx';
 import SubmitButton from './SubmitButton.jsx';
+import Button from './Button.jsx';
 
 const UpdateProfileForm = () => {
 	const [name, setName] = useState('');
@@ -14,9 +19,11 @@ const UpdateProfileForm = () => {
 	const [confirmPassword, setConfirmPassword] = useState('');
 
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 
 	const { userInfo } = useSelector((state) => state.auth);
 	const [updateUser, { isLoading }] = useUpdateUserMutation();
+	const [deleteUser] = useDeleteUserMutation();
 
 	useEffect(() => {
 		setName(userInfo.name);
@@ -44,6 +51,15 @@ const UpdateProfileForm = () => {
 		}
 	};
 
+	const deleteUserFunction = async () => {
+		try {
+			navigate('/');
+			await deleteUser();
+			dispatch(removeCredentials());
+		} catch (err) {
+			toast.error(err?.data?.message || err.error);
+		}
+	};
 	return (
 		<div className="flex flex-col justify-center my-7">
 			<form
@@ -110,6 +126,12 @@ const UpdateProfileForm = () => {
 
 				<SubmitButton>Update</SubmitButton>
 			</form>
+			<Button
+				onClick={deleteUserFunction}
+				className="w-full mx-auto my-3 bg-red-500 max-w-72 md:max-w-md hover:bg-red-600 active:bg-red-400"
+			>
+				Delete
+			</Button>
 		</div>
 	);
 };
