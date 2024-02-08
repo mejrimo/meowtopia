@@ -16,9 +16,10 @@ const Navbar = () => {
 
 	const location = useLocation();
 
-	const active = 'text-lg font-bold p-2 bg-zinc-100 text-violet-900 rounded';
+	const active =
+		'text-lg font-bold p-2 bg-zinc-100 text-violet-900 rounded w-full';
 	const inactive =
-		'text-lg font-medium p-2 text-zinc-700 hover:text-violet-700';
+		'text-lg font-medium p-2 text-zinc-700 hover:text-violet-700 w-full';
 
 	const openMenu = () => {
 		setIsMenuOpen(true);
@@ -155,7 +156,7 @@ const Navbar = () => {
 								onClick={closeMenu}
 							>
 								<ul className="py-2 space-y-4">
-									<li className="w-full">
+									<li>
 										<Link
 											to="/"
 											className={location.pathname === '/' ? active : inactive}
@@ -163,7 +164,7 @@ const Navbar = () => {
 											Home
 										</Link>
 									</li>
-									<li className="w-full">
+									<li>
 										<Link
 											to="/contact"
 											className={
@@ -178,7 +179,7 @@ const Navbar = () => {
 								{userInfo ? (
 									<div className="py-4 divide-y divide-zinc-700/50">
 										<ul className="py-2 space-y-4">
-											<li className="w-full">
+											<li>
 												<Link
 													to="/profile"
 													className={
@@ -188,7 +189,7 @@ const Navbar = () => {
 													Profile
 												</Link>
 											</li>
-											<li className="w-full">
+											<li>
 												<Link
 													to="/profile/favorites"
 													className={
