@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const baseQuery = fetchBaseQuery({
-	baseUrl: '',
+	baseUrl: 'https://meowtopia-server.onrender.com',
 	prepareHeaders: (headers) => {
 		const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 		if (userInfo) {
