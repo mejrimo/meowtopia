@@ -30,12 +30,11 @@ app.use(express.urlencoded({ extended: true }));
 //parse incoming JSON requests
 app.use(express.json());
 //cors
-app.use(
-	cors({
-		origin: 'https://meowtopia-jrnc.onrender.com', //'https://meowtopia-jrnc.onrender.com',
-		credentials: true,
-	})
-);
+app.use(cors());
+// {
+// 		origin: 'https://meowtopia-jrnc.onrender.com', //'https://meowtopia-jrnc.onrender.com',
+// 		credentials: true,
+// 	}
 
 //DEBUG middleware
 app.use((req, res, next) => {
