@@ -155,7 +155,7 @@ const Navbar = () => {
 								onClick={closeMenu}
 							>
 								<ul className="py-2 space-y-4">
-									<li>
+									<li className="w-full">
 										<Link
 											to="/"
 											className={location.pathname === '/' ? active : inactive}
@@ -163,7 +163,7 @@ const Navbar = () => {
 											Home
 										</Link>
 									</li>
-									<li>
+									<li className="w-full">
 										<Link
 											to="/contact"
 											className={
@@ -178,7 +178,7 @@ const Navbar = () => {
 								{userInfo ? (
 									<div className="py-4 divide-y divide-zinc-700/50">
 										<ul className="py-2 space-y-4">
-											<li>
+											<li className="w-full">
 												<Link
 													to="/profile"
 													className={
@@ -188,7 +188,7 @@ const Navbar = () => {
 													Profile
 												</Link>
 											</li>
-											<li>
+											<li className="w-full">
 												<Link
 													to="/profile/favorites"
 													className={
@@ -205,7 +205,7 @@ const Navbar = () => {
 											<Link
 												to="/"
 												onClick={logoutHandler}
-												className="p-2 text-lg font-medium text-zinc-700 hover:text-violet-700 active:font-bold active:text-violet-900"
+												className="w-full p-2 text-lg font-medium text-zinc-700 hover:text-violet-700 active:font-bold active:text-violet-900"
 											>
 												Logout
 											</Link>
