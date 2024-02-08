@@ -1,14 +1,13 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import Loader from './Loader';
 import { useFetchKitties } from '../hooks/useFetchKitties';
 import KittyCard from './KittyCard';
-import { useGetFavKittiesIdQuery } from '../slices/usersApiSlice';
 
 const FavKitties = () => {
+	const { userInfo } = useSelector((state) => state.auth);
 	const { isLoading, isError, kittiesData } = useFetchKitties('kitties');
-	const { data } = useGetFavKittiesIdQuery();
 
 	const navigate = useNavigate();
 
@@ -21,7 +20,7 @@ const FavKitties = () => {
 	}
 
 	const favoritesElements = kittiesData.filter((kitty) =>
-		data?.includes(kitty._id)
+		userInfo?.favKittiesId?.includes(kitty._id)
 	);
 
 	return (
