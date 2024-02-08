@@ -18,7 +18,6 @@ const URI = process.env.MONGO_URI;
 // EXPRESS APP
 const app = express();
 
-app.set('trust proxy'); // trust first proxy
 //MIDDLEWARES
 //for security http header
 app.use(helmet());
@@ -33,9 +32,8 @@ app.use(express.json());
 //cors
 app.use(
 	cors({
-		origin: true, //'https://meowtopia-jrnc.onrender.com',
+		origin: '*', //'https://meowtopia-jrnc.onrender.com',
 		credentials: true,
-		exposedHeaders: ['Set-Cookie'],
 	})
 );
 
