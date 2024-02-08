@@ -32,7 +32,7 @@ app.use(express.json());
 //cors
 app.use(
 	cors({
-		origin: '*', //'https://meowtopia-jrnc.onrender.com',
+		origin: 'https://meowtopia-jrnc.onrender.com', //'https://meowtopia-jrnc.onrender.com',
 		credentials: true,
 	})
 );
