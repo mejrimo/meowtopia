@@ -47,11 +47,13 @@ const LoginForm = () => {
 				<h1 className="my-3 text-3xl font-bold text-center text-zinc-700">
 					Sign In
 				</h1>
+
 				<div className="flex flex-col py-3 text-zinc-700">
 					<label htmlFor="email" className="px-1">
 						Email Address
 					</label>
 					<input
+						id="email"
 						type="email"
 						placeholder="Enter Email"
 						value={email}
@@ -59,11 +61,13 @@ const LoginForm = () => {
 						className="p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
 					/>
 				</div>
+
 				<div className="flex flex-col py-3 text-zinc-700">
 					<label htmlFor="password" className="px-1">
 						Password
 					</label>
 					<input
+						id="password"
 						type="password"
 						placeholder="Enter Password"
 						value={password}

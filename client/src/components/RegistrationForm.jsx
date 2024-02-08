@@ -53,11 +53,13 @@ const RegistrationForm = () => {
 				<h1 className="my-3 text-3xl font-bold text-center text-zinc-700">
 					Sign Up
 				</h1>
+
 				<div className="flex flex-col py-3 text-zinc-700">
 					<label htmlFor="name" className="px-1">
 						Name
 					</label>
 					<input
+						id="name"
 						type="text"
 						placeholder="Enter Name"
 						value={name}
@@ -71,6 +73,7 @@ const RegistrationForm = () => {
 						Email Address
 					</label>
 					<input
+						id="email"
 						type="email"
 						placeholder="Enter Email"
 						value={email}
@@ -84,6 +87,7 @@ const RegistrationForm = () => {
 						Password
 					</label>
 					<input
+						id="password"
 						type="password"
 						placeholder="Enter Password"
 						value={password}
@@ -97,6 +101,7 @@ const RegistrationForm = () => {
 						Confirm Password
 					</label>
 					<input
+						id="confirmPassword"
 						type="password"
 						placeholder="Confirm Password"
 						value={confirmPassword}

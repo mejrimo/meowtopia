@@ -75,6 +75,7 @@ const UpdateProfileForm = () => {
 						Name
 					</label>
 					<input
+						id="name"
 						type="text"
 						placeholder="Enter Name"
 						value={name}
@@ -88,6 +89,7 @@ const UpdateProfileForm = () => {
 						Email Address
 					</label>
 					<input
+						id="email"
 						type="email"
 						placeholder="Enter Email"
 						value={email}
@@ -101,6 +103,7 @@ const UpdateProfileForm = () => {
 						Password
 					</label>
 					<input
+						id="password"
 						type="password"
 						placeholder="Enter Password"
 						value={password}
@@ -110,10 +113,11 @@ const UpdateProfileForm = () => {
 				</div>
 
 				<div className="flex flex-col py-3 text-zinc-700">
-					<label htmlFor="password" className="px-1">
+					<label htmlFor="confirmPassword" className="px-1">
 						Confirm Password
 					</label>
 					<input
+						id="confirmPassword"
 						type="password"
 						placeholder="Enter Password"
 						value={confirmPassword}
