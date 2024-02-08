@@ -19,13 +19,6 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 			}),
 		}),
 
-		logout: builder.mutation({
-			query: () => ({
-				url: `${USERS_URL}/logout`,
-				method: 'POST',
-			}),
-		}),
-
 		updateUser: builder.mutation({
 			query: (data) => ({
 				url: `${USERS_URL}/profile`,
@@ -47,22 +40,13 @@ export const usersApiSlice = apiSlice.injectEndpoints({
 				method: 'POST',
 			}),
 		}),
-
-		getFavKittiesId: builder.query({
-			query: () => ({
-				url: `${USERS_URL}/profile/favorites`,
-				method: 'GET',
-			}),
-		}),
 	}),
 });
 
 export const {
 	useLoginMutation,
 	useRegisterMutation,
-	useLogoutMutation,
 	useUpdateUserMutation,
 	useDeleteUserMutation,
 	useUpdateFavoritesMutation,
-	useGetFavKittiesIdQuery,
 } = usersApiSlice;
