@@ -132,7 +132,7 @@ const UpdateProfileForm = () => {
 			</form>
 			<button
 				onClick={deleteUserFunction}
-				className="w-full py-2 mx-auto font-medium bg-red-500 rounded-md shadow text-zinc-100 my-3px-6 max-w-72 md:max-w-md hover:bg-red-600 active:bg-red-400"
+				className="w-full px-6 py-2 mx-auto my-3 font-medium bg-red-500 rounded-md shadow text-zinc-100 max-w-72 md:max-w-md hover:bg-red-600 active:bg-red-400"
 			>
 				Delete
 			</button>
