@@ -16,18 +16,23 @@ const kittySchema = new Schema(
 		gender: {
 			type: String,
 			enum: ['M', 'F'],
+			required: [true, "can't be blank"],
 		},
 		age: {
 			type: String,
+			required: [true, "can't be blank"],
 		},
 		isPeopleFriendly: {
 			type: Boolean,
+			required: true,
 		},
 		isAnimalFriendly: {
 			type: Boolean,
+			required: true,
 		},
 		isSpecialNeeds: {
 			type: Boolean,
+			required: true,
 		},
 		description: {
 			type: String,
