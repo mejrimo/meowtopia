@@ -9,12 +9,14 @@ const authUser = asyncHandler(async (req, res) => {
 	const loginUser = await User.findOne({ email });
 
 	if (loginUser && (await loginUser.matchPassword(password))) {
-		generateToken(res, loginUser._id);
+		const token = generateToken(loginUser._id);
 
 		res.status(201).json({
 			_id: loginUser._id,
 			name: loginUser.name,
 			email: loginUser.email,
+			favKittiesId: loginUser.favKittiesId,
+			token,
 		});
 	} else {
 		res.status(401);
@@ -34,12 +36,14 @@ const registerUser = asyncHandler(async (req, res) => {
 
 	const newUser = await User.create({ name, email, password });
 	if (newUser) {
-		generateToken(res, newUser._id);
+		const token = generateToken(newUser._id);
 
 		res.status(201).json({
 			_id: newUser._id,
 			name: newUser.name,
 			email: newUser.email,
+			favKittiesId: newUser.favKittiesId,
+			token,
 		});
 	} else {
 		res.status(400);
@@ -47,26 +51,22 @@ const registerUser = asyncHandler(async (req, res) => {
 	}
 });
 
-//POST @/logout - RESET cookie and logout user
-const logoutUser = asyncHandler(async (req, res) => {
-	res.cookie('jwt', '', {
-		httpOnly: true,
-		expires: new Date(0),
-	});
-
-	res.status(200).json({ message: 'User logged out' });
-});
-
 //GET @/profile - GET user profile
 const getUserProfile = asyncHandler(async (req, res) => {
-	const user = {
-		_id: req.user._id,
-		name: req.user.name,
-		email: req.user.email,
-		favKittiesId: req.user.favKittiesId,
-	};
-
-	res.status(200).json(user);
+	const user = await User.findById(req.user._id);
+	if (user) {
+		const { token } = req;
+		res.status(200).json({
+			_id: user._id,
+			name: user.name,
+			email: user.email,
+			favKittiesId: user.favKittiesId,
+			token,
+		});
+	} else {
+		res.status(404);
+		throw new Error('User not found');
+	}
 });
 
 //PATCH @/profile - UPDATE user profile
@@ -74,6 +74,8 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 	const user = await User.findById(req.user._id);
 
 	if (user) {
+		const { token } = req;
+
 		user.name = req.body.name || user.name;
 		user.email = req.body.email || user.email;
 
@@ -87,6 +89,8 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 			_id: updatedUser._id,
 			name: updatedUser.name,
 			email: updatedUser.email,
+			favKittiesId: updatedUser.favKittiesId,
+			token,
 		});
 	} else {
 		res.status(404);
@@ -100,10 +104,6 @@ const deleteUser = asyncHandler(async (req, res) => {
 
 	if (user) {
 		await User.deleteOne(user._id);
-		res.cookie('jwt', '', {
-			httpOnly: true,
-			expires: new Date(0),
-		});
 		res.status(200).json({
 			deletedUser: {
 				_id: user._id,
@@ -124,6 +124,7 @@ const changeFavorites = asyncHandler(async (req, res) => {
 	const { kittyId } = req.params;
 
 	if (user) {
+		const { token } = req;
 		if (user.favKittiesId.includes(kittyId)) {
 			// user.favKittiesId = user.favKittiesId.filter((id) => id !== kittyId);
 			const index = user.favKittiesId.indexOf(kittyId);
@@ -132,41 +133,23 @@ const changeFavorites = asyncHandler(async (req, res) => {
 			}
 			const updatedUser = await user.save();
 			res.status(200).json({
-				updatedUser: {
-					_id: updatedUser._id,
-					name: updatedUser.name,
-					email: updatedUser.email,
-					favKittiesId: updatedUser.favKittiesId,
-				},
-				message: 'Kitty successfully removed from favorites',
+				_id: updatedUser._id,
+				name: updatedUser.name,
+				email: updatedUser.email,
+				favKittiesId: updatedUser.favKittiesId,
+				token,
 			});
 		} else {
 			user.favKittiesId.push(kittyId);
 			const updatedUser = await user.save();
 			res.status(200).json({
-				updatedUser: {
-					_id: updatedUser._id,
-					name: updatedUser.name,
-					email: updatedUser.email,
-					favKittiesId: updatedUser.favKittiesId,
-				},
-				message: 'Kitty successfully added to your favorites',
+				_id: updatedUser._id,
+				name: updatedUser.name,
+				email: updatedUser.email,
+				favKittiesId: updatedUser.favKittiesId,
+				token,
 			});
 		}
-	} else {
-		res.status(404);
-		throw new Error('User not found');
-	}
-});
-
-//GET @/profile/favorites - GET ALL user's favorites kitties
-const getAllFavorites = asyncHandler(async (req, res) => {
-	const user = await User.findById(req.user._id);
-
-	if (user) {
-		const favKittiesId = user.favKittiesId;
-
-		res.status(200).json(favKittiesId);
 	} else {
 		res.status(404);
 		throw new Error('User not found');
@@ -176,10 +159,8 @@ const getAllFavorites = asyncHandler(async (req, res) => {
 export {
 	authUser,
 	registerUser,
-	logoutUser,
 	getUserProfile,
 	updateUserProfile,
 	deleteUser,
 	changeFavorites,
-	getAllFavorites,
 };
