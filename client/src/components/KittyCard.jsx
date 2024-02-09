@@ -9,19 +9,18 @@ const KittyCard = ({ data }) => {
 		return (
 			<div
 				key={_id}
-				className="relative w-40 my-6 transition-all duration-200 transform shadow-md cursor-pointer shadow-slate-300 md:w-48 lg:w-56 rounded-3xl hover:shadow-lg hover:-translate-y-1"
+				className="relative w-40 h-40 my-6 transition-all duration-200 transform shadow-md cursor-pointer shadow-slate-300 md:w-48 md:h-48 lg:w-56 lg:h-56 rounded-3xl hover:shadow-lg hover:-translate-y-1"
 			>
 				<div className="absolute cursor-pointer top-3 right-3">
 					<Heart size={18} id={_id} />
 				</div>
 				<Link to={`/kitty/${_id}`}>
-					<div className="flex items-center justify-center ">
-						<img
-							className="object-contain w-full h-24 rounded-lg lg:h-40 md:h-32"
-							src={image}
-							alt={`${name} picture`}
-						/>
-					</div>
+					<img
+						className="object-cover w-full h-28 rounded-t-3xl lg:h-40 md:h-32"
+						src={image}
+						alt={`${name} picture`}
+					/>
+
 					<div className="flex items-center mx-4 mt-2">
 						<div className="text-sm font-semibold me-3 text-zinc-700 md:text-base lg:text-lg">
 							{name}

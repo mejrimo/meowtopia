@@ -47,7 +47,7 @@ const KittyDetails = () => {
 				<img
 					src={image}
 					alt={`${name} photo`}
-					className="mb-6 h-96 shadow-[0_2px_21px_0_rgba(0,0,0,0.25)] w-full object-contain "
+					className="mb-6 h-[30rem] w-fit shadow-[0_2px_21px_0_rgba(0,0,0,0.25)] object-cover"
 				></img>
 
 				<div className="flex items-center justify-between w-full mb-5 px-7">
@@ -129,7 +129,7 @@ const KittyDetails = () => {
 						<img
 							src={image}
 							alt={`${name} photo`}
-							className="shadow-[0_2px_21px_0_rgba(0,0,0,0.25)] max-w-xl object-contain rounded-3xl"
+							className="shadow-[0_2px_21px_0_rgba(0,0,0,0.25)] w-[100rem] h-[36rem] object-cover rounded-3xl"
 						></img>
 						<div className="absolute cursor-pointer top-8 right-8">
 							<Heart id={_id} size={30} />
