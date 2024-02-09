@@ -16,7 +16,7 @@ const KittyCard = ({ data }) => {
 				</div>
 				<Link to={`/kitty/${_id}`}>
 					<img
-						className="object-cover object-center w-full h-28 rounded-t-3xl lg:h-40 md:h-36"
+						className="object-cover object-center w-full h-28 rounded-t-3xl lg:h-40 md:h-32"
 						src={image}
 						alt={`${name} picture`}
 					/>
