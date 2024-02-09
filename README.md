@@ -77,8 +77,8 @@ In the server folder you can find a .env.exemple file. You have to put your keys
 
 Both server and client sides are deployed on render.com. You can try them:
 
-[Server](https://meowtopia-server.onrender.com)
-[Client](https://meowtopia-jrnc.onrender.com)
+- [Server](https://meowtopia-server.onrender.com)
+- [Client](https://meowtopia-jrnc.onrender.com)
 
 ## License
 
