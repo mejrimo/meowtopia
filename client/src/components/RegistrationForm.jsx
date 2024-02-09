@@ -51,17 +51,17 @@ const RegistrationForm = () => {
 				className="max-w-md px-6 mx-auto border rounded-lg md:w-full border-zinc-300"
 			>
 				<h1 className="my-3 text-3xl font-bold text-center text-zinc-700">
-					Sign Up
+					Registrati
 				</h1>
 
 				<div className="flex flex-col py-3 text-zinc-700">
 					<label htmlFor="name" className="px-1">
-						Name
+						Nome
 					</label>
 					<input
-						id="name"
+						name="name"
 						type="text"
-						placeholder="Enter Name"
+						placeholder="Inserisci Nome"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
 						className="p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
@@ -70,12 +70,12 @@ const RegistrationForm = () => {
 
 				<div className="flex flex-col py-3 text-zinc-700">
 					<label htmlFor="email" className="px-1">
-						Email Address
+						Email
 					</label>
 					<input
-						id="email"
+						name="email"
 						type="email"
-						placeholder="Enter Email"
+						placeholder="Inserisci Email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						className="p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
@@ -87,9 +87,9 @@ const RegistrationForm = () => {
 						Password
 					</label>
 					<input
-						id="password"
+						name="password"
 						type="password"
-						placeholder="Enter Password"
+						placeholder="Inserisci Password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						className="p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
@@ -98,12 +98,12 @@ const RegistrationForm = () => {
 
 				<div className="flex flex-col py-3 text-zinc-700">
 					<label htmlFor="confirmPassword" className="px-1">
-						Confirm Password
+						Conferma Password
 					</label>
 					<input
-						id="confirmPassword"
+						name="confirmPassword"
 						type="password"
-						placeholder="Confirm Password"
+						placeholder="Conferma Password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						className="p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
@@ -112,15 +112,15 @@ const RegistrationForm = () => {
 
 				{isLoading && <Loader />}
 
-				<SubmitButton>Sign up</SubmitButton>
+				<SubmitButton>Registrati</SubmitButton>
 
 				<p className="mx-1 my-3 text-zinc-700">
-					Already have an account?{' '}
+					Sei già un utente?{' '}
 					<Link
 						to="/login"
 						className="cursor-pointer text-violet-700 hover:text-violet-900 active:text-violet-500"
 					>
-						Login
+						Accedi
 					</Link>
 				</p>
 			</form>

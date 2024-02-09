@@ -59,6 +59,7 @@ const UpdateProfileForm = () => {
 			toast.error(err?.data?.message || err.error);
 		}
 	};
+
 	return (
 		<div className="flex flex-col justify-center my-7">
 			<form
@@ -66,17 +67,17 @@ const UpdateProfileForm = () => {
 				className="max-w-md px-6 mx-auto border rounded-lg md:w-full border-zinc-300"
 			>
 				<h1 className="my-3 text-3xl font-bold text-center text-zinc-700">
-					Update Profile
+					Modifica Profilo
 				</h1>
 
 				<div className="flex flex-col py-3 text-zinc-700">
 					<label htmlFor="name" className="px-1">
-						Name
+						Nome
 					</label>
 					<input
-						id="name"
+						name="name"
 						type="text"
-						placeholder="Enter Name"
+						placeholder="Inserisci Nome"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
 						className="p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
@@ -85,12 +86,12 @@ const UpdateProfileForm = () => {
 
 				<div className="flex flex-col py-3 text-zinc-700">
 					<label htmlFor="email" className="px-1">
-						Email Address
+						Email
 					</label>
 					<input
-						id="email"
+						name="email"
 						type="email"
-						placeholder="Enter Email"
+						placeholder="Inserisci Email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						className="p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
@@ -102,9 +103,9 @@ const UpdateProfileForm = () => {
 						Password
 					</label>
 					<input
-						id="password"
+						name="password"
 						type="password"
-						placeholder="Enter Password"
+						placeholder="Inserisci Password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						className="p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
@@ -113,12 +114,12 @@ const UpdateProfileForm = () => {
 
 				<div className="flex flex-col py-3 text-zinc-700">
 					<label htmlFor="confirmPassword" className="px-1">
-						Confirm Password
+						Conferma Password
 					</label>
 					<input
-						id="confirmPassword"
+						name="confirmPassword"
 						type="password"
-						placeholder="Enter Password"
+						placeholder="Conferma Password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						className="p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
@@ -127,13 +128,13 @@ const UpdateProfileForm = () => {
 
 				{isLoading && <Loader />}
 
-				<SubmitButton>Update</SubmitButton>
+				<SubmitButton>Modifica</SubmitButton>
 			</form>
 			<button
 				onClick={deleteUserFunction}
 				className="w-full px-6 py-2 mx-auto my-2 font-medium bg-red-600 rounded-lg shadow text-zinc-100 max-w-72 md:max-w-md hover:bg-red-700 active:bg-red-500"
 			>
-				Delete
+				Elimina account
 			</button>
 		</div>
 	);

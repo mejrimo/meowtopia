@@ -16,9 +16,10 @@ const Navbar = () => {
 
 	const location = useLocation();
 
-	const active = 'text-lg font-bold p-2 bg-zinc-100 text-violet-900 rounded';
+	const active =
+		'text-lg font-bold p-2 bg-zinc-100 text-violet-900 rounded block';
 	const inactive =
-		'text-lg font-medium p-2 text-zinc-700 hover:text-violet-700';
+		'text-lg font-medium p-2 text-zinc-700 hover:text-violet-700 block';
 
 	const openMenu = () => {
 		setIsMenuOpen(true);
@@ -93,7 +94,7 @@ const Navbar = () => {
 										location.pathname === '/contact' ? active : inactive
 									}
 								>
-									Contact
+									Contatti
 								</Link>
 							</li>
 						</ul>
@@ -101,7 +102,7 @@ const Navbar = () => {
 							<DropdownMenu userName={userInfo.name} />
 						) : (
 							<Link to="/login" className="ms-8">
-								<Button>Sign in</Button>
+								<Button>Accedi</Button>
 							</Link>
 						)}
 					</div>
@@ -155,7 +156,7 @@ const Navbar = () => {
 								onClick={closeMenu}
 							>
 								<ul className="py-2 space-y-4">
-									<li className="block">
+									<li>
 										<Link
 											to="/"
 											className={location.pathname === '/' ? active : inactive}
@@ -163,14 +164,14 @@ const Navbar = () => {
 											Home
 										</Link>
 									</li>
-									<li className="block">
+									<li>
 										<Link
 											to="/contact"
 											className={
 												location.pathname === '/contact' ? active : inactive
 											}
 										>
-											Contact
+											Contatti
 										</Link>
 									</li>
 								</ul>
@@ -178,17 +179,17 @@ const Navbar = () => {
 								{userInfo ? (
 									<div className="py-4 divide-y divide-zinc-700/50">
 										<ul className="py-2 space-y-4">
-											<li className="block">
+											<li>
 												<Link
 													to="/profile"
 													className={
 														location.pathname === '/profile' ? active : inactive
 													}
 												>
-													Profile
+													Profilo
 												</Link>
 											</li>
-											<li className="block">
+											<li>
 												<Link
 													to="/profile/favorites"
 													className={
@@ -197,7 +198,7 @@ const Navbar = () => {
 															: inactive
 													}
 												>
-													Favorites
+													Preferiti
 												</Link>
 											</li>
 										</ul>
@@ -207,14 +208,14 @@ const Navbar = () => {
 												onClick={logoutHandler}
 												className="block p-2 text-lg font-medium text-zinc-700 hover:text-violet-700 active:font-bold active:text-violet-900"
 											>
-												Logout
+												Esci
 											</Link>
 										</div>
 									</div>
 								) : (
 									<div className="py-4">
 										<Link to="/login">
-											<Button className="w-full">Sign in</Button>
+											<Button className="w-full">Accedi</Button>
 										</Link>
 									</div>
 								)}

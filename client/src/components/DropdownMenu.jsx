@@ -53,7 +53,7 @@ const DropdownMenu = ({ userName }) => {
 										'block px-4 py-2 text-zinc-700'
 									)}
 								>
-									Profile
+									Profilo
 								</Link>
 							)}
 						</Menu.Item>
@@ -66,7 +66,7 @@ const DropdownMenu = ({ userName }) => {
 										'block px-4 py-2 text-zinc-700'
 									)}
 								>
-									Favorites
+									Preferiti
 								</Link>
 							)}
 						</Menu.Item>

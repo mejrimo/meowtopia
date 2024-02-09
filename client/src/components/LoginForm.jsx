@@ -45,17 +45,17 @@ const LoginForm = () => {
 				className="max-w-md px-6 mx-auto border rounded-lg md:w-full border-zinc-300"
 			>
 				<h1 className="my-3 text-3xl font-bold text-center text-zinc-700">
-					Sign In
+					Accedi
 				</h1>
 
 				<div className="flex flex-col py-3 text-zinc-700">
 					<label htmlFor="email" className="px-1">
-						Email Address
+						Email
 					</label>
 					<input
-						id="email"
+						name="email"
 						type="email"
-						placeholder="Enter Email"
+						placeholder="Inserici Email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						className="p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
@@ -67,9 +67,9 @@ const LoginForm = () => {
 						Password
 					</label>
 					<input
-						id="password"
+						name="password"
 						type="password"
-						placeholder="Enter Password"
+						placeholder="Inserisci Password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
 						className="p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
@@ -78,15 +78,15 @@ const LoginForm = () => {
 
 				{isLoading && <Loader />}
 
-				<SubmitButton>Sign in</SubmitButton>
+				<SubmitButton>Accedi</SubmitButton>
 
 				<p className="mx-1 my-3 text-zinc-700">
-					New user? Please{' '}
+					Nuovo utente? Per favore{' '}
 					<Link
 						to="/register"
 						className="cursor-pointer text-violet-700 hover:text-violet-900 active:text-violet-500"
 					>
-						register
+						registrati
 					</Link>
 				</p>
 			</form>

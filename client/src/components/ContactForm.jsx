@@ -40,20 +40,20 @@ const ContactForm = () => {
 		<div className="flex flex-col justify-center my-7">
 			<form
 				onSubmit={sendEmail}
-				className="max-w-md px-6 mx-auto border rounded-lg md:w-full border-zinc-300"
+				className="w-full max-w-xs px-6 mx-auto border rounded-lg md:max-w-md border-zinc-300"
 			>
 				<h1 className="my-3 text-3xl font-bold text-center text-zinc-700">
-					Contact Us
+					Contattaci
 				</h1>
 
 				<div className="flex flex-col py-3 text-zinc-700">
 					<label htmlFor="name" className="px-1">
-						Your Name
+						Nome
 					</label>
 					<input
 						type="text"
 						name="name"
-						placeholder="Enter Name"
+						placeholder="Inserici Nome"
 						value={name}
 						onChange={(e) => setName(e.target.value)}
 						className="p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
@@ -62,12 +62,12 @@ const ContactForm = () => {
 
 				<div className="flex flex-col py-3 text-zinc-700">
 					<label htmlFor="email" className="px-1">
-						Email Address
+						Email
 					</label>
 					<input
 						type="email"
 						name="email"
-						placeholder="Enter Email"
+						placeholder="Inserici Email"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						className="p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
@@ -76,19 +76,19 @@ const ContactForm = () => {
 
 				<div className="flex flex-col py-3 text-zinc-700">
 					<label htmlFor="message" className="px-1">
-						Which cat do you want information about?
+						Di quale gatto vorresti ricevere informazioni?
 					</label>
 					<textarea
 						name="message"
-						placeholder="Write here your message, we'll reply as soon as possible..."
+						placeholder="Scrivi qui il tuo messaggio, ti risponderemo appena possibile..."
 						value={message}
 						onChange={(e) => setMessage(e.target.value)}
-						className="block w-full p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
+						className="w-full p-2 mt-1 border rounded-lg border-zinc-300 focus:outline-none focus:border-violet-300"
 						rows="4"
 					/>
 				</div>
 
-				<SubmitButton>Send message</SubmitButton>
+				<SubmitButton>Invia messaggio</SubmitButton>
 			</form>
 		</div>
 	);
