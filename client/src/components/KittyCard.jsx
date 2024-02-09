@@ -15,13 +15,11 @@ const KittyCard = ({ data }) => {
 					<Heart size={18} id={_id} />
 				</div>
 				<Link to={`/kitty/${_id}`}>
-					<div className="flex items-center justify-center">
-						<img
-							className="object-cover object-center w-full h-28 rounded-t-3xl lg:h-40 md:h-3"
-							src={image}
-							alt={`${name} picture`}
-						/>
-					</div>
+					<img
+						className="object-cover object-center w-full h-28 rounded-t-3xl lg:h-40 md:h-3"
+						src={image}
+						alt={`${name} picture`}
+					/>
 
 					<div className="flex items-center mx-4 mt-2">
 						<div className="text-sm font-semibold me-3 text-zinc-700 md:text-base lg:text-lg">
