@@ -1,15 +1,19 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaMars, FaVenus } from 'react-icons/fa';
 import Heart from './Heart';
+import Button from './Button';
 
 const KittyCard = ({ data }) => {
-	const kittyElements = data?.map((kitty) => {
+	const initialDisplay = 8;
+	const [incrementDisplay, setIncrementDisplay] = useState(initialDisplay);
+	const kittyElements = data?.slice(0, incrementDisplay)?.map((kitty) => {
 		const { _id, image, name, gender, age } = kitty;
 
 		return (
 			<div
 				key={_id}
-				className="relative w-40 h-48 my-6 transition-all duration-200 transform shadow-md cursor-pointer shadow-slate-300 md:w-48 md:h-56 lg:w-56 lg:h-64 rounded-3xl hover:shadow-lg hover:-translate-y-1"
+				className="relative h-48 my-6 transition-all duration-200 transform shadow-md cursor-pointer w-44 shadow-slate-300 md:w-52 md:h-56 lg:w-60 lg:h-64 rounded-3xl hover:shadow-lg hover:-translate-y-1"
 			>
 				<div className="absolute cursor-pointer top-3 right-3">
 					<Heart size={18} id={_id} />
@@ -37,7 +41,27 @@ const KittyCard = ({ data }) => {
 		);
 	});
 
-	return <>{kittyElements}</>;
+	const loadMore = () => {
+		console.log('load more kitties plz');
+		setIncrementDisplay(initialDisplay + incrementDisplay);
+	};
+
+	return (
+		<>
+			<div className="container mx-auto">
+				<div className="grid grid-cols-2 my-10 md:grid-cols-3 lg:grid-cols-4 bg-zinc-100 justify-items-center">
+					{kittyElements}
+				</div>
+				<div className="flex items-center justify-center mt-auto mb-10">
+					{incrementDisplay < data.length ? (
+						<Button clickFunc={loadMore}>Cairca Altri</Button>
+					) : (
+						<Button>Sei arrivato alla fine del lista</Button>
+					)}
+				</div>
+			</div>
+		</>
+	);
 };
 
 export default KittyCard;
