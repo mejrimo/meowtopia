@@ -65,17 +65,3 @@ app.use('/api/kitties', kittyRoutes);
 //ERRORHANDLER
 app.use(notFound);
 app.use(errorHandler);
-
-// //CONNECTION TO DB
-// mongoose
-// 	.connect(URI)
-// 	.then(() => {
-// 		//LISTEN FOR REQUEST
-// 		app.listen(PORT, () => {
-// 			console.log('Connected to DB and listening on port', PORT);
-// 		});
-// 	})
-// 	.catch((err) => {
-// 		console.log(`error:${err.message}`);
-// 		process.exit(1);
-// 	});
