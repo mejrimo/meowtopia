@@ -13,5 +13,3 @@ export default defineConfig({
 	// 	},
 	// },
 });
-
-// 'https://meowtopia-server.onrender.com'
