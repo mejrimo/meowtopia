@@ -56,7 +56,7 @@ const KittyCard = ({ data }) => {
 					{incrementDisplay < data.length ? (
 						<Button clickFunc={loadMore}>Cairca Altri</Button>
 					) : (
-						<Button>Sei arrivato alla fine del lista</Button>
+						<Button>Fine della lista</Button>
 					)}
 				</div>
 			</div>
