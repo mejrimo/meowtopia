@@ -54,7 +54,7 @@ const KittyCard = ({ data }) => {
 				</div>
 				<div className="flex items-center justify-center mt-auto mb-10">
 					{incrementDisplay < data.length ? (
-						<Button clickFunc={loadMore}>Cairca Altri</Button>
+						<Button clickFunc={loadMore}>Carica Altri</Button>
 					) : (
 						<Button>Fine della lista</Button>
 					)}
